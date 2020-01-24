@@ -1,58 +1,58 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dash/flutter_dash.dart';
-import 'package:task/util/diamontBorder.dart';
 
-class TaskPage extends StatefulWidget {
+class PersonalPage extends StatefulWidget {
   @override
-  _TaskPageState createState() => _TaskPageState();
+  _PersonalPageState createState() => _PersonalPageState();
 }
 
-class _TaskPageState extends State<TaskPage> {
+class _PersonalPageState extends State<PersonalPage> {
+  TextStyle _stylePersonal = TextStyle(
+    color: Color(0xFFF9497D),
+    fontSize: 32.0,
+    fontFamily: 'IBM Plex Mono',
+    fontWeight: FontWeight.bold,
+  );
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Task Page'),
+        title: Text('Personal Page'),
       ),
       body: ListView(
         children: <Widget>[
-          _title(),
-          _carrusel(),
+          _tittle(),
+          Container(
+            padding: EdgeInsets.only(left: 32, right: 32),
+            child: Divider(
+              thickness: 6,
+              color: Color(0xFFF9497D),
+            ),
+          ),
           _checkTask(),
         ],
       ),
-      bottomNavigationBar: _navigationBar(),
-      floatingActionButton: _floatButton(),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );
   }
 
-  Widget _title() {
+  Widget _tittle() {
     return Container(
-      width: 411.0,
-      height: 72.0,
       padding: EdgeInsets.only(left: 32.0, top: 28.0),
-      child: Text('Tasks',
-          style: TextStyle(fontFamily: 'IBM Plex Mono', fontSize: 32.0)),
-    );
-  }
-
-  Widget _carrusel() {
-    return SingleChildScrollView(
-      padding: EdgeInsets.only(left: 32.0, top: 18.0),
-      scrollDirection: Axis.horizontal,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.end,
+      child: Column(
         children: <Widget>[
-          Container(
-            margin: EdgeInsets.only(right: 10.0),
-            child: Image(
-              image: AssetImage('assets/list-btn-add.png'),
+          Align(
+            alignment: Alignment.centerLeft,
+            child: Text(
+              'Personal',
+              style: _stylePersonal,
             ),
           ),
-          Container(
-            child: Image(
-              image: AssetImage('assets/list-cards-items.png'),
+          Align(
+            alignment: Alignment.centerLeft,
+            child: Text(
+              '& home tasks',
+              style: _stylePersonal,
             ),
           ),
         ],
@@ -63,12 +63,13 @@ class _TaskPageState extends State<TaskPage> {
   Widget _checkTask() {
     return Container(
       width: 556.0,
-      padding: EdgeInsets.only(left: 32.0, top: 34.0, right: 32.0),
+      padding: EdgeInsets.only(left: 32.0, top: 18.0, right: 32.0),
       child: ListBody(
         children: <Widget>[
-          Text(
-            'Tasks for today',
-            style: TextStyle(fontFamily: 'IBM Plex Mono', fontSize: 20.0),
+          Dash(
+            direction: Axis.horizontal,
+            length: 300,
+            dashLength: 1,
           ),
           CheckboxListTile(
             value: false,
@@ -82,7 +83,7 @@ class _TaskPageState extends State<TaskPage> {
           ),
           Dash(
             direction: Axis.horizontal,
-            length: 330,
+            length: 300,
             dashLength: 1,
           ),
           CheckboxListTile(
@@ -100,7 +101,7 @@ class _TaskPageState extends State<TaskPage> {
           ),
           Dash(
             direction: Axis.horizontal,
-            length: 330,
+            length: 300,
             dashLength: 1,
           ),
           CheckboxListTile(
@@ -119,7 +120,7 @@ class _TaskPageState extends State<TaskPage> {
           checkSubtitle(),
           Dash(
             direction: Axis.horizontal,
-            length: 330,
+            length: 300,
             dashLength: 1,
           ),
           CheckboxListTile(
@@ -171,59 +172,4 @@ class _TaskPageState extends State<TaskPage> {
     );
   }
 
-  Widget _navigationBar() {
-    return BottomAppBar(
-      //shape: const CircularNotchedRectangle(),
-      child: Container(
-        height: 50.0,
-        child: Row(
-          children: <Widget>[
-            Container(
-                //height: 56,
-                //width: 137,
-
-                padding: EdgeInsets.only(left: 70.0, top: 1.0),
-                child: Column(
-                  children: <Widget>[
-                    FlatButton(
-                      onPressed: (){},
-                      child: Column(
-                        children: <Widget>[
-                          Icon(Icons.dehaze),
-                          Text('Tasks')
-                        ],
-                      ),
-                      ),
-                    //Text('Tasks'),
-                  ],
-                )),
-            Container(
-                //height: 56,
-                padding: EdgeInsets.only(left: 100.0, top: 1.0),
-                child: Column(
-                  children: <Widget>[
-                    FlatButton(
-                      onPressed: (){},
-                      child: Column(
-                        children: <Widget>[
-                          Icon(Icons.dehaze),
-                          Text('Sсhedule')
-                        ],
-                      ),
-                      ),
-                  ],
-                ))
-          ],
-        ),
-      ),
-    );
-  }
-
-  Widget _floatButton() {
-    return FloatingActionButton(
-        onPressed: () => {},
-        tooltip: 'Increment Counter',
-        child: Icon(Icons.add),
-        shape: DiamondBorder());
-  }
 }

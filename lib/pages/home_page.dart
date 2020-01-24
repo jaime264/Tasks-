@@ -23,7 +23,7 @@ class HomePage extends StatelessWidget {
         Divider(),
         ListTile(
           title: Text('Personal'),
-          onTap: () => Navigator.pushNamed(context, 'NoFound'),
+          onTap: () => Navigator.pushNamed(context, 'Personal'),
         ),
         Divider(),
         ListTile(
